@@ -1,0 +1,38 @@
+p {
+	color: black;
+}
+
+h1 {
+    color: Black;
+    font-family: Helvetica;
+}
+
+h2 {
+	text-transform: uppercase;
+	font-size: 28px;
+}
+
+
+/* unvisited link */
+a:link {
+    color: #8FBC8F;
+}
+
+/* visited link */
+a:visited {
+    color: #8FBC8F;
+}
+
+/* mouse over link */
+a:hover {
+    color: #8FBC8F;
+   	font-style: italic;
+   	text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: #8FBC8F;
+   	font-style: italic;
+   	text-decoration: none;
+}
