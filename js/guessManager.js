@@ -6,10 +6,10 @@ $(document).ready(function()
 	submitButton.addEventListener('click',processInput);
 });
 
-function processInput(input)
+function processInput(e)
 {
 	console.log("button clicked");
-	input.preventDefault();
+	e.preventDefault();
 	var input = +$(this).closest('.form-inline').find('#guess').val();
 	console.log("Input: "+input);
 
