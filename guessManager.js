@@ -22,15 +22,15 @@ $(document).ready(function()
 		return false;
 	});
 
-	submitButton = document.querySelector('#submitGuess');
-	restartButton = document.querySelector('#restart');
-	hintButton = document.querySelector('#hint');
-	guessEntry = document.querySelector('#guess');
+	submitButton = $('#guessingForm').find('#submitGuess');
+	restartButton = $('#guessArea').find('#restart');
+	hintButton = $('#guessArea').find('#hint');
+	guessEntry = $('#guessingForm').find('#guess');
 
-	submitButton.addEventListener('click',processInput);
-	hintButton.addEventListener('click',showHint);
-	restartButton.addEventListener('click',gameStart);
-	guessEntry.addEventListener('focus',clearInput);
+	submitButton.on('click',processInput);
+	hintButton.on('click',showHint);
+	restartButton.on('click',gameStart);
+	guessEntry.on('focus',clearInput);
 
 	$(guessEntry).keyup(function(event)
 	{
@@ -187,8 +187,8 @@ function gameStart()
 	$('#gameHeader').text("Guess the Number! (1-100)");
 	$('#gameHeader').css("visibility","visible");
 	$('#guessingForm').css("visibility","visible");
-	$(hintButton).css("visibility","visible");
-	$(restartButton).text("Restart Game");
+	hintButton.css("visibility","visible");
+	restartButton.text("Restart Game");
 	$('#guessesTitle').css("visibility","hidden");
 	$('#hintDisplay').css("visibility","hidden");
 	clearInput.apply(guessEntry);
@@ -204,10 +204,10 @@ function gameStart()
 function gameOver()
 {
 	$('#guessArea').append(gameResultImg);
-	$(hintButton).css("visibility","hidden");
+	hintButton.css("visibility","hidden");
 	$('#hintDisplay').css("visibility","hidden");
 	$('#guessingForm').css("visibility","hidden");
-	$(restartButton).text("Play Again");
+	restartButton.text("Play Again");
 }
 
 function animateBackground()
