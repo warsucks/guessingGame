@@ -172,7 +172,7 @@ function victory()
 
 function defeat()
 {
-	$('#gameHeader').text("YOU LOSE :(");
+	$('#gameHeader').text("YOU LOSE :( It was "+mysteryNumber);
 	gameResultImg = $('<img src = "images/cryingChild.gif" id = "gameResultImg"></img>');
 }
 
