@@ -184,7 +184,7 @@ function gameStart()
 	{
 		gameResultImg.remove();
 	}
-	$('#gameHeader').text("Guess the Number!");
+	$('#gameHeader').text("Guess the Number! (1-100)");
 	$('#gameHeader').css("visibility","visible");
 	$('#guessingForm').css("visibility","visible");
 	$(hintButton).css("visibility","visible");
