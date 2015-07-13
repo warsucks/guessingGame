@@ -5,6 +5,7 @@ var bgBlinkTimer;
 
 var guessEntry;
 var pastGuesses;
+var guessArray = [];
 var maxGuesses = 5;
 var numGuesses = maxGuesses;
 
@@ -50,6 +51,7 @@ function processInput(e)//unnecessary e
 
 	if(validGuess(input))
 	{
+		guessArray.push(input);
 		$('#guessesTitle').css("visibility","visible");
 		numGuesses --;
 		$('#guessTicker').text(numGuesses);
@@ -73,6 +75,7 @@ function printGuess(guess)
 	var temp;
 	var tempString;
 	var tempColor;
+	var compareString = "";
 
 	setTempPrint(guess);
 
@@ -86,7 +89,7 @@ function printGuess(guess)
 		suggestion = "Guess lower"
 	}
 
-	var guessNode = $('<li><b>'+guess+'</b>: '+tempString+'...'+suggestion+'</li>');
+	var guessNode = $('<li><b>'+guess+'</b>: '+tempString+compareString+suggestion+'</li>');
 	guessNode.css("color", tempColor);
 	pastGuesses.prepend(guessNode);
 
@@ -94,53 +97,70 @@ function printGuess(guess)
 	{
 		var distance = Math.abs(guess - mysteryNumber);
 
+		if(guessArray.length>1)
+		{
+			if (distance<Math.abs(guessArray[guessArray.length-2] - mysteryNumber))
+			{
+				compareString = "Warmer than previous guess. ";
+			}
+			else if (distance>Math.abs(guessArray[guessArray.length-2] - mysteryNumber))
+			{
+				compareString = "Colder than previous guess. ";
+			}
+			else
+			{
+				compareString = "Same temperature as previous guess. "
+			}
+		}
+
 		if(distance>=50)
 		{
 			temp= 7;
 			tempColor = "#0500ff";
-			tempString = "Outer-Space Cold";
+			tempString = "Outer-Space Cold ";
 		}
 		else if(distance>=35)
 		{
 			temp = 6;
 			tempColor = "#0044ff";
-			tempString = "Ice Cold";
+			tempString = "Ice Cold. ";
 		}
 		else if(distance>=20)
 		{
 			temp = 5;
 			tempColor = "#00e4ff";
-			tempString = "Lemonade Cool";
+			tempString = "Lemonade Cool. ";
 		}
 		else if(distance>=10)
 		{
 			temp = 4;
 			tempColor = "#00ffa8";
-			tempString = "Room Temperature";
+			tempString = "Room Temperature. ";
 		}
 		else if(distance>=6)
 		{
 			temp = 3;
 			tempColor = "#e5c22e";
-			tempString = "Warm Like a Sweater";
+			tempString = "Warm Like a Sweater. ";
 		}
 		else if(distance>=3)
 		{
 			temp = 2;
 			tempColor = "#FFaa00";
-			tempString = "Hot Potato";
+			tempString = "Hot Potato. ";
 		}
 		else if(distance>=1)
 		{
 			temp = 1;
 			tempColor = "#FF6400";
-			tempString = "Almost there!";
+			tempString = "Almost there! ";
 		}
 		else
 		{
 			temp = 0;
 			tempColor = "#FF0020";
-			tempString = "YOU DID IT!!!";
+			tempString = "YOU DID IT!!! ";
+			compareString = "";
 		}
 	}
 }
